@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LESSON4</title>
+    <style>
+      .myBtn {
+        background-color: rgb(25, 135, 84);
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .myBtn1,
+      .myButton2 {
+        background-color: rgb(25, 135, 84);
+        color: white;
+        padding: 15px 25px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 18px;
+      }
+      .myButtonRed {
+        background-color: rgb(220, 53, 69);
+        color: white;
+        padding: 15px 25px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      const container = document.querySelector(".js-container");
+      const root = ReactDOM.createRoot(container);
+      // ex 4a
+      function BTN() {
+        return (
+          <>
+            <button className="myBtn">ON</button>
+          </>
+        );
+      }
+
+      // ex 4b
+
+      function BTN1() {
+        const [isButtonOn, setIsButtonOn] = React.useState(true);
+
+        return (
+          <>
+            <button onClick={onOrOff} className="myBtn1">
+              <span id="btn">ON</span>
+            </button>
+          </>
+        );
+
+        function onOrOff() {
+          const button = document.getElementById("btn");
+
+          isButtonOn
+            ? ((button.textContent = "OFF"), setIsButtonOn(false))
+            : ((button.textContent = "ON"), setIsButtonOn(true));
+        }
+      }
+
+      // ex 4c
+
+      function BTN2() {
+        const [isButtonOn, setIsButtonOn] = React.useState(true);
+
+        return (
+          <>
+            <button
+              onClick={onOrOff}
+              className={isButtonOn ? "myButton2" : "myButtonRed"}
+            >
+              <span id="btn">ON</span>
+            </button>
+          </>
+        );
+
+        function onOrOff() {
+          const button = document.getElementById("btn");
+
+          isButtonOn
+            ? ((button.textContent = "OFF"),
+              setIsButtonOn(false),
+              (className = { myButtonRed }))
+            : ((button.textContent = "ON"), setIsButtonOn(true));
+        }
+      }
+
+      // ex 4f and 4g
+
+      function Timer() {
+        const [time, setTime] = React.useState(dayjs().format("HH:mm:ss"));
+
+        React.useEffect(() => {
+          // console.log(time)
+          setInterval(() => {
+            setTime(dayjs().format("HH:mm:ss"));
+             console.log("run code");
+          }, 1000);
+         
+        },[setTime]);
+
+        return <p>Current time: {time}</p>;
+      }
+
+      root.render(<Timer />);
+    </script>
+  </body>
+</html>

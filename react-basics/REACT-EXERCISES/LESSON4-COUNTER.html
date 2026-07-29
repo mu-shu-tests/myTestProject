@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Lesson4-counter</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .buttons-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 10px;
+        height: 100vh;
+        background-color: rgb(222, 222, 222);
+      }
+      button {
+        background-color: rgb(25, 135, 84);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      // ex ...4h
+      function CounterApp1() {
+        const autoCLickRef = React.useRef(null);
+
+        let [count, setCount] = React.useState(0);
+
+        //   console.log(autoCLickRef.current);
+        //  console.log(buttonElm);
+
+        function reset() {
+          count = 0;
+          setCount(count);
+        }
+        /*
+        function autoClick() {
+          setInterval(() => {
+            setCount(count += 1);
+          }, 700);
+        }
+          */
+        function autoClick() {
+          const buttonElem = autoCLickRef.current;
+          // console.log(buttonElem);
+          buttonElem.click = setInterval(() => {
+            // console.log('clicked');
+            setCount((count += 1));
+          }, 1000);
+        }
+
+        function myCount() {
+          setCount((count += 1));
+          // console.log(count);
+        }
+
+        return (
+          <>
+            <button ref={autoCLickRef} onClick={myCount}>
+              Clicked {count} {count === 1 ? "time" : "times"}
+            </button>
+
+            <button onClick={reset}>Reset</button>
+
+            <button onClick={autoClick}>Auto Click</button>
+          </>
+        );
+      }
+
+      function CounterApp2() {
+        const autoCLickRef = React.useRef(null);
+
+        let [count, setCount] = React.useState(0);
+
+        //   console.log(autoCLickRef.current);
+        //  console.log(buttonElm);
+
+        function reset() {
+          count = 0;
+          setCount(count);
+        }
+        /*
+        function autoClick() {
+          setInterval(() => {
+            setCount(count += 1);
+          }, 700);
+        }
+          */
+        function autoClick() {
+          const buttonElem = autoCLickRef.current;
+          // console.log(buttonElem);
+          buttonElem.click = setInterval(() => {
+            // console.log('clicked');
+            setCount((count += 1));
+          }, 1000);
+        }
+
+        function myCount() {
+          setCount((count += 1));
+          // console.log(count);
+        }
+
+        return (
+          <div className="buttons-container">
+            <button ref={autoCLickRef} onClick={myCount}>
+              Clicked {count} {count === 1 ? "time" : "times"}
+            </button>
+
+            <button onClick={reset}>Reset</button>
+
+            <button onClick={autoClick}>Auto Click</button>
+          </div>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      const root = ReactDOM.createRoot(container);
+      root.render(<CounterApp2 />);
+    </script>
+  </body>
+</html>

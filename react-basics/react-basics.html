@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <script>
+      // IMPORTANT NOTES: REACT IS AN EXTERNAL LIBRARY WHICH HELP US TO CREATE WEBSITES EASIER;
+      // EXTERNAL LIBRARY MEANS THAT SOMEONE ELES WROTE IT OUTSIDE AND LET US USE THAT CODE;
+      // BELOW STARTING THE SECOND SCRIPT THESE ARE THE LINKS THAT POINTS TO REACT LIBRARY; WE SHOULD NOTICE THAT THERE ARE TWO LIBRARIES : FIRST ONE : REACT AND SECOND ONE REACT-DOM. THE QUESTION IS THAT WHY WE USE TWO LIBRARIES ====> THE ANSWER IS REACT PROVIDES TWO LIBRARIES : THE REACT LIBRARY IS FOR SHARED FEATURES THAT CAN BE USED BOTH ON WEBSITES AND MOB APPLICATIONS AND REACT-DOM IS IS REACT LIBRARY JUST USED FOR WEBSITES SO FOR WEB DEVELOPMENT WE SHOULD USE BOTH OF THESE LIBRARIES; IN ANY CASE IF WE WANT TO DEVELOP MOBILE APPS THROUGH REACT WE SHOULD USE THE REACT AND REACT-NATIVE LIBRARIES;
+      // REACT CAN BE USED BOTH IN WEB & MOBILE APP DEVELOPMENT SO THE SEPERATE THE LIBRARIES : THE REACT LIBRARY IS USED FOR SHARED FEATURES. THE REACT-DOM LIBRARIES IS USED FOR THOSE KIND OF FEATURES THAT ARE USED IN WEB DEVELOPMENT. AND REACT-NATIVE IS A LIBRARY THAT IS USED IN MOBILE APP DEVELOPMENT.
+      
+      
+    </script>
+    <div class="js-container"></div>
+    <script src="react-basics.js"></script>
+    <script src="https://unpkg.com/supersimpledev@8.6.4/external-library.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <!--BABEL IS LIBRARY THAT TRANSLATES THE HTML CODE INTO JSX : JSX STANDS FOR JAVASCRIPT XML : SO FOR SECOND PART OF THE DEFINATION WE CAN SAY THAT REACT HELP US TO BUILD THE WEBSITES EASIER. THIS IS AN EXAMPLE OF IT THAT WE CAN USE THE HTML WITH JS EASIER.-->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+     // we can make the elements individually like below and we can just render one them in the page.
+
+     const btn = <button>Send</button>
+     const paragraph = <p>My name is muhammad shuaib hemat</p>
+    // if we want to render multiple elements in our website we must group them first through the div element;
+     const div = <div>
+      <button>Send</button>
+      <p>My name is muhammad shuaib hemat</p>
+      </div>
+
+      // TO RENDER EVERYTHING THAT WE WANT TO SHOW ON THE PAGE WE NEED A CONTAINER.
+
+      
+      const container = document.querySelector('.js-container');// HERE WE SELECT THE CONTAINER BY SELECTING THE CLASS OF CONTAINER.
+      // REACTDOM.CREATEROOT : SET'S UP REACT AND .RENDER MEANS TO SHOW EVERTHING THAT IS IN DIV IN CONTAINER ELEMENT. 
+      ReactDOM.createRoot(container).render(div);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LESSON CHA</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .paragraph {
+        font-size: 18px;
+      }
+
+      .email-container {
+        margin-bottom: 10px;
+      }
+
+      .pass-container {
+        margin-bottom: 20px;
+      }
+
+      .inputs {
+        padding: 10px;
+        width: 250px;
+        border-radius: 5px;
+        border: 1px solid black;
+      }
+      .buttons {
+        background-color: rgb(0, 123, 255);
+        color: white;
+        border: none;
+        margin-right: 10px;
+        padding: 12px 18px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: opacity 0.15s;
+      }
+
+      .buttons:hover {
+        opacity: 0.85;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      const container = document.querySelector(".js-container");
+      const root = ReactDOM.createRoot(container);
+      // ex 4d     ex 4e
+
+      function Input() {
+        return (
+          <div>
+            <p className="paragraph">
+              Assalamu Alaikum, welcome to my website.
+            </p>
+
+            <div className="email-container">
+              <input type="text" placeholder="Email" className="inputs" />
+            </div>
+
+            <div className="pass-container">
+              <input type="text" placeholder="Password" className="inputs" />
+            </div>
+
+            <div className="buttons-container">
+              <button className="buttons">Login</button>
+              <button className="buttons">Sign up</button>
+            </div>
+          </div>
+        );
+      }
+
+      function Input1() {
+        const [showPassword, setShowPassword] = React.useState(true);
+
+        function renderPassword() {
+          const showHideBtn = document.getElementById("showHideButton");
+          showPassword
+            ? ((showHideBtn.innerHTML = "Hide"), setShowPassword(false))
+            : ((showHideBtn.innerHTML = "Show"), setShowPassword(true));
+        }
+        return (
+          <div>
+            <p className="paragraph">
+              Assalamu Alaikum, welcome to my website.
+            </p>
+
+            <div className="email-container">
+              <input type="text" placeholder="Email" className="inputs" />
+            </div>
+
+            <div className="pass-container">
+              <input
+                type={showPassword ? "password" : "text"}
+                placeholder="Password"
+                className="inputs"
+              />
+              <button id="showHideButton" onClick={renderPassword}>
+                show
+              </button>
+            </div>
+
+            <div className="buttons-container">
+              <button className="buttons">Login</button>
+              <button className="buttons">Sign up</button>
+            </div>
+          </div>
+        );
+      }
+      root.render(<Input1 />);
+    </script>
+  </body>
+</html>
