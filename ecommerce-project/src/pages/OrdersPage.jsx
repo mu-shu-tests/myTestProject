@@ -3,6 +3,7 @@ import "../pages/OrdersPage.css";
 function OrdersPage() {
   return (
     <>
+      <title>Orders</title>
       <div class="header">
         <div class="left-section">
           <a href="/" class="header-link">

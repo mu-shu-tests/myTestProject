@@ -3,6 +3,7 @@ import "../pages/TrackingPage.css";
 function TrackingPage() {
   return (
     <>
+    <title>Tracking</title>
       {" "}
       <div class="header">
         <div class="left-section">
