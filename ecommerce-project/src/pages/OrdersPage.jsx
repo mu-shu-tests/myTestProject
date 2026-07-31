@@ -51,7 +51,7 @@ function OrdersPage() {
               </div>
 
               <div class="product-actions">
-                <Link href="/tracking">
+                <Link to="/tracking">
                   <button class="track-package-button button-secondary">
                     Track package
                   </button>
@@ -78,7 +78,7 @@ function OrdersPage() {
               </div>
 
               <div class="product-actions">
-                <Link href="/tracking">
+                <Link to="/tracking">
                   <button class="track-package-button button-secondary">
                     Track package
                   </button>
@@ -125,7 +125,7 @@ function OrdersPage() {
               </div>
 
               <div class="product-actions">
-                <Link href="/tracking">
+                <Link to="/tracking">
                   <button class="track-package-button button-secondary">
                     Track package
                   </button>
