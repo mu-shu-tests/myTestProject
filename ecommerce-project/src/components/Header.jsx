@@ -1,4 +1,4 @@
-import "../pages/header.css";
+import "../pages/Header.css";
 import { Link } from "react-router";
 function Header() {
   return (
