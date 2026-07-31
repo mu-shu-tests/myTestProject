@@ -3,9 +3,8 @@ import Header from "../components/Header";
 function TrackingPage() {
   return (
     <>
-    <title>Tracking</title>
-      {" "}
-     
+      <link rel="icon" type="image/svg+xml" href="tracking-favicon.png" />
+      <title>Tracking</title>{" "}
       <div class="tracking-page">
         <div class="order-tracking">
           <a class="back-to-orders-link link-primary" href="/orders">
