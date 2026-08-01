@@ -2,6 +2,20 @@ import "../pages/HomePage.css";
 import Header from "../components/Header";
 import CheckmarkIcon from "../assets/images/icons/checkmark.png";
 import { products } from "../../../starting-code/data/products";
+fetch("http://localhost:3000/api/products")
+  .then((Response) => {
+    //console.log(Response);
+    return Response.json();
+    /*
+   .then((data)=> {
+    console.log(data);
+  })
+*/ 
+// when we use return we can transfer then() to outside to be cleaner a little bit;
+  })
+  .then((data) => {
+    console.log(data);
+  });
 function HomePage() {
   return (
     <>
