@@ -2,21 +2,31 @@ import "../pages/HomePage.css";
 import Header from "../components/Header";
 import CheckmarkIcon from "../assets/images/icons/checkmark.png";
 import { products } from "../../../starting-code/data/products";
+import axios from "axios";
+
+
+function HomePage() {
+  /*
 fetch("http://localhost:3000/api/products")
   .then((Response) => {
     //console.log(Response);
+    // console.log(Response.json()) it returns a Promise.
     return Response.json();
     /*
    .then((data)=> {
     console.log(data);
   })
-*/ 
-// when we use return we can transfer then() to outside to be cleaner a little bit;
+
+    // when we use return we can transfer then() to outside to be cleaner a little bit;
   })
   .then((data) => {
     console.log(data);
   });
-function HomePage() {
+*/
+
+  axios.get("http://localhost:3000/api/products").then((response) => {
+    console.log(response.data);
+  });
   return (
     <>
       <link rel="icon" type="image/svg+xml" href="home-favicon.png" />
