@@ -1,11 +1,11 @@
 import "../pages/HomePage.css";
 import Header from "../components/Header";
 import CheckmarkIcon from "../assets/images/icons/checkmark.png";
-
+import formatCurrency from "../pages/utils/money";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function HomePage({cart}) {
+function HomePage({ cart }) {
   /*
 fetch("http://localhost:3000/api/products")
   .then((Response) => {
@@ -30,8 +30,6 @@ fetch("http://localhost:3000/api/products")
       // console.log(response.data);
       setProducts(response.data);
     });
-
-
   }, []);
 
   return (
@@ -64,7 +62,7 @@ fetch("http://localhost:3000/api/products")
                 </div>
 
                 <div className="product-price">
-                  {(product.priceCents / 100).toFixed(2)}
+                  {formatCurrency(product.priceCents)}
                 </div>
 
                 <div className="product-quantity-container">
