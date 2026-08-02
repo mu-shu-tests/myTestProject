@@ -24,17 +24,17 @@ fetch("http://localhost:3000/api/products")
   });
 */
   const [products, setProducts] = useState([]);
-  const [cart,setCart] = useState([]);
+  const [cart, setCart] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:3000/api/products").then((response) => {
+    axios.get("/api/products").then((response) => {
       // console.log(response.data);
       setProducts(response.data);
     });
 
-    axios.get("http://localhost:3000/api/cart-items").then((response)=>{
+    axios.get("/api/cart-items").then((response) => {
       //console.log(response.data);
       setCart(response.data);
-    })
+    });
   }, []);
 
   return (
