@@ -5,7 +5,13 @@ import LogoWhite from "../assets/images/logo-white.png";
 import MobileLoge from "../assets/images/mobile-logo-white.png";
 import SearchIcon from "../assets/images/icons/search-icon.png";
 import CartIcon from "../assets/images/icons/cart-icon.png";
-function Header() {
+function Header({cart}) {
+
+  let totalQuantity = 0;
+  
+  cart.forEach((cartItem)=> {
+    totalQuantity += cartItem.quantity;
+  })
   return (
     <div className="header">
       <div className="left-section">
