@@ -1,6 +1,6 @@
-import "../pages/HomePage.css";
-import Header from "../components/Header";
-import ProductsGrid from "./home/ProductsGrid";
+import "../home/HomePage.css";
+import Header from "../../components/Header";
+import ProductsGrid from "./ProductsGrid";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
