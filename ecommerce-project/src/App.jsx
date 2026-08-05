@@ -17,7 +17,7 @@ function App() {
       //  setCart(response.data);
       //});
       const response = await axios.get("/api/cart-items?expand=product");
-      console.log(response.data);
+      // console.log(response.data);
       setCart(response.data);
     };
     fetchAppData();
