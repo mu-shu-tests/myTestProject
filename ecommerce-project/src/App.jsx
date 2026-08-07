@@ -32,7 +32,7 @@ function App() {
         path="tracking/:orderId/:productId"
         element={<TrackingPage cart={cart} />}
       />
-      <Route path="*" element={<NotFound />} />
+      <Route path="*" element={<NotFound cart={cart} />} />
     </Routes>
   );
 }

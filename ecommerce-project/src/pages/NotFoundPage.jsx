@@ -1,10 +1,10 @@
 import Header from "../components/Header";
 import "../pages/NotFoundPage.css";
-function NotFound() {
+function NotFound({cart}) {
   return (
     <>
       <title>Not Found</title>
-      <Header />
+      <Header cart={cart} />
 
       <div className="not-found-page">
         <div className="not-found-content">

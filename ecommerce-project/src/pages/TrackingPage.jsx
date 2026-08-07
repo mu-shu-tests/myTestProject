@@ -41,7 +41,7 @@ function TrackingPage({ cart }) {
     // console.log(timePassedMs);
     let deliveryPercent;
     let arrivingOn = "Arriving on";
-    const calculateThePercent =
+      // some calculations
       ((timePassedMs / totalDeliveryTimeMs) * 100).toFixed(2) > 100
         ? ((deliveryPercent = 100), (arrivingOn = "Delivered on"))
         : ((deliveryPercent = 50), arrivingOn);
