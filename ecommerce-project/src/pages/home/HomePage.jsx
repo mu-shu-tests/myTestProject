@@ -4,7 +4,7 @@ import ProductsGrid from "./ProductsGrid";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function HomePage({ cart }) {
+function HomePage({ cart, loadCart }) {
   /*
 fetch("http://localhost:3000/api/products")
   .then((Response) => {
@@ -40,7 +40,7 @@ fetch("http://localhost:3000/api/products")
       <Header cart={cart} />
 
       <div className="home-page">
-        <ProductsGrid products={products} />
+        <ProductsGrid products={products} loadCart={loadCart} />
       </div>
     </>
   );
