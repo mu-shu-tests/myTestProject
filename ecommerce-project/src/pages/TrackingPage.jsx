@@ -32,16 +32,20 @@ function TrackingPage({ cart }) {
 
     const totalDeliveryTimeMs =
       selectedProduct.estimatedDeliveryTimeMs - order.orderTimeMs;
-    //console.log(totalDeliveryTimeMs);
+    // console.log(totalDeliveryTimeMs);
     // console.log("Here is the product!");
     // console.log(selectedProduct);
-   // console.log("time passed");
-   // let timePassedMs = totalDeliveryTimeMs * 0.3;
-   const timePassedMs = dayjs().valueOf() - order.orderTimeMs;
-   // console.log(timePassedMs);
-   let deliveryPercent;
-   const calculateThePercent = ((timePassedMs / totalDeliveryTimeMs) * 100).toFixed(2) > 100 ? deliveryPercent =100: deliveryPercent = 50;
-   console.log(deliveryPercent);
+    // console.log("time passed");
+    // let timePassedMs = totalDeliveryTimeMs * 0.3;
+    const timePassedMs = dayjs().valueOf() - order.orderTimeMs;
+    // console.log(timePassedMs);
+    let deliveryPercent;
+    let arrivingOn = "Arriving on";
+    const calculateThePercent =
+      ((timePassedMs / totalDeliveryTimeMs) * 100).toFixed(2) > 100
+        ? ((deliveryPercent = 100), (arrivingOn = "Delivered on"))
+        : ((deliveryPercent = 50), arrivingOn);
+    console.log(deliveryPercent);
     return (
       <>
         <link rel="icon" type="image/svg+xml" href="tracking-favicon.png" />
@@ -52,7 +56,7 @@ function TrackingPage({ cart }) {
               View all orders
             </Link>
             <div className="delivery-date">
-              Arriving on{" "}
+              {arrivingOn}{" "}
               {dayjs(productId.estimatedDeliveryTimeMs).format("dddd, MMMM D")}
             </div>
 
@@ -75,7 +79,10 @@ function TrackingPage({ cart }) {
               <div className="progress-label">Delivered</div>
             </div>
             <div className="progress-bar-container">
-              <div className="progress-bar" style={{width:`${deliveryPercent}%`}}></div>
+              <div
+                className="progress-bar"
+                style={{ width: `${deliveryPercent}%` }}
+              ></div>
             </div>
           </div>
         </div>
