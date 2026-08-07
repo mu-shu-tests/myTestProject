@@ -45,7 +45,17 @@ function TrackingPage({ cart }) {
       ((timePassedMs / totalDeliveryTimeMs) * 100).toFixed(2) > 100
         ? ((deliveryPercent = 100), (arrivingOn = "Delivered on"))
         : ((deliveryPercent = 50), arrivingOn);
-    console.log(deliveryPercent);
+    //console.log(deliveryPercent);
+    let isPreparing;
+    let isShipped;
+    let isDeliverd;
+    if (deliveryPercent < 33) {
+      isPreparing = deliveryPercent;
+    } else if (deliveryPercent >= 33 && deliveryPercent < 100) {
+      isShipped = deliveryPercent;
+    } else if (deliveryPercent === 100) {
+      isDeliverd = deliveryPercent;
+    }
     return (
       <>
         <link rel="icon" type="image/svg+xml" href="tracking-favicon.png" />
@@ -74,9 +84,21 @@ function TrackingPage({ cart }) {
             </>
 
             <div className="progress-labels-container">
-              <div className="progress-label">Preparing</div>
-              <div className="progress-label current-status">Shipped</div>
-              <div className="progress-label">Delivered</div>
+              <div
+                className={`progress-label ${isPreparing && "current-status"}`}
+              >
+                Preparing
+              </div>
+              <div
+                className={`progress-label ${isShipped && "current-status"}`}
+              >
+                Shipped
+              </div>
+              <div
+                className={`progress-label ${isDeliverd && "current-status"}`}
+              >
+                Delivered
+              </div>
             </div>
             <div className="progress-bar-container">
               <div
