@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import formatCurrency from "../utils/money";
 
-function OrderHeader({order}) {
+function OrderHeader({ order }) {
   return (
     <div className="order-header">
       <div className="order-header-left-section">
@@ -11,7 +11,7 @@ function OrderHeader({order}) {
         </div>
         <div className="order-total">
           <div className="order-header-label">Total:</div>
-          <div>{formatCurrency(order.totalCostCents)}</div>
+          <div>{"$" + formatCurrency(order.totalCostCents)}</div>
         </div>
       </div>
 
