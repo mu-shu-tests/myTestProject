@@ -35,7 +35,7 @@ function Products({ product, loadCart }) {
         </div>
       </div>
 
-      <div className="product-price">{formatCurrency(product.priceCents)}</div>
+      <div className="product-price">{"$"+ formatCurrency(product.priceCents)}</div>
 
       <div className="product-quantity-container">
         <select value={quantity} onChange={selectedQuantity}>

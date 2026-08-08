@@ -1,6 +1,12 @@
 import formatCurrency from "../utils/money";
-
-function CartitemDetails({cartItem}) {
+import axios from "axios";
+function CartitemDetails({ cartItem, loadCart }) {
+  const deleteCartItem = async () => {
+    await axios.delete(`/api/cart-items/${cartItem.productId}`, {
+      productId: cartItem.productId,
+    });
+    await loadCart();
+  };
   return (
     <>
       <img className="product-image" src={cartItem.product.image} />
@@ -8,7 +14,7 @@ function CartitemDetails({cartItem}) {
       <div className="cart-item-details">
         <div className="product-name">{cartItem.product.name}</div>
         <div className="product-price">
-          {formatCurrency(cartItem.product.priceCents)}
+          {"$" + formatCurrency(cartItem.product.priceCents)}
         </div>
         <div className="product-quantity">
           <span>
@@ -16,7 +22,12 @@ function CartitemDetails({cartItem}) {
             <span className="quantity-label">{cartItem.quantity}</span>
           </span>
           <span className="update-quantity-link link-primary">Update</span>
-          <span className="delete-quantity-link link-primary">Delete</span>
+          <span
+            className="delete-quantity-link link-primary"
+            onClick={deleteCartItem}
+          >
+            Delete
+          </span>
         </div>
       </div>
     </>
