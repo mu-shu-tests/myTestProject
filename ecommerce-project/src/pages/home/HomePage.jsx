@@ -5,6 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function HomePage({ cart, loadCart }) {
+  window.axios = axios;
   /*
 fetch("http://localhost:3000/api/products")
   .then((Response) => {
