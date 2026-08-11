@@ -24,12 +24,22 @@ function CartitemDetails({ cartItem, loadCart }) {
     console.log(quantity);
   };
 
+  const keyboardEvent = (event) => {
+    if (event.key === "Enter") {
+      showUpdateInput();
+    } else if (event.key === "Escape") {
+      setQuantity(cartItem.quantity);
+      setUpdate(false);
+    }
+  };
+
   const deleteCartItem = async () => {
     await axios.delete(`/api/cart-items/${cartItem.productId}`, {
       productId: cartItem.productId,
     });
     await loadCart();
   };
+
   return (
     <>
       <img className="product-image" src={cartItem.product.image} />
@@ -49,6 +59,7 @@ function CartitemDetails({ cartItem, loadCart }) {
               }
               value={quantity}
               onChange={getInputQuantity}
+              onKeyDown={keyboardEvent}
             />
             <span className="quantity-label">{cartItem.quantity}</span>
           </span>
