@@ -3,6 +3,8 @@ import axios from "axios";
 import { useState } from "react";
 function CartitemDetails({ cartItem, loadCart }) {
   const [update, setUpdate] = useState(false);
+  const [quantity,setQuantity] = useState(cartItem.quantity);
+
 
   const showUpdateInput = () => {
     if (update) {
@@ -13,6 +15,11 @@ function CartitemDetails({ cartItem, loadCart }) {
       console.log(update);
     }
   };
+
+  const getInputQuantity = (event)=> {
+    setQuantity(event.target.value);
+    console.log(quantity);
+  }
 
   const deleteCartItem = async () => {
     await axios.delete(`/api/cart-items/${cartItem.productId}`, {
@@ -31,7 +38,7 @@ function CartitemDetails({ cartItem, loadCart }) {
         </div>
         <div className="product-quantity">
           <span>
-            Quantity: <input type="text" className={update ? "quantity-input" : "no-display-quantity-input"} />
+            Quantity: <input type="text" className={update ? "quantity-input" : "no-display-quantity-input"} value={quantity} onChange={getInputQuantity} />
             <span className="quantity-label">{cartItem.quantity}</span>
           </span>
           <span className="update-quantity-link link-primary" onClick={showUpdateInput}>Update</span>
