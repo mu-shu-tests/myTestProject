@@ -211,3 +211,6 @@
 .quantity-input {
   width: 50px;
 }
+.no-display-quantity-input {
+  display: none;
+}
