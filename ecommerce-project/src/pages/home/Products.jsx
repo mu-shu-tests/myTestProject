@@ -4,6 +4,7 @@ import { useState } from "react";
 import CheckmarkIcon from "../../assets/images/icons/checkmark.png";
 
 function Products({ product, loadCart }) {
+  const [showAdded, setShowAdded] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
   const addToCart = async () => {
@@ -12,6 +13,10 @@ function Products({ product, loadCart }) {
       quantity,
     });
     await loadCart();
+    setShowAdded(true);
+    setTimeout(() => {
+      setShowAdded(false);
+    }, 2000);
   };
   const selectedQuantity = async (event) => {
     const selectedQuantity = Number(event.target.value);
@@ -35,7 +40,9 @@ function Products({ product, loadCart }) {
         </div>
       </div>
 
-      <div className="product-price">{"$"+ formatCurrency(product.priceCents)}</div>
+      <div className="product-price">
+        {"$" + formatCurrency(product.priceCents)}
+      </div>
 
       <div className="product-quantity-container">
         <select value={quantity} onChange={selectedQuantity}>
@@ -54,7 +61,12 @@ function Products({ product, loadCart }) {
 
       <div className="product-spacer"></div>
 
-      <div className="added-to-cart">
+      <div
+        className="added-to-cart"
+        style={{
+          opacity: showAdded ? 1 : 0,
+        }}
+      >
         <img src={CheckmarkIcon} />
         Added
       </div>
