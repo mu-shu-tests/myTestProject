@@ -3,8 +3,11 @@ import Header from "../../components/Header";
 import ProductsGrid from "./ProductsGrid";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router";
 
 function HomePage({ cart, loadCart }) {
+  const [searchParams] = useSearchParams();
+  const search = searchParams.get('search');
   window.axios = axios;
   /*
 fetch("http://localhost:3000/api/products")
@@ -27,12 +30,18 @@ fetch("http://localhost:3000/api/products")
 
   useEffect(() => {
     const fetchHomeData = async () => {
-      const response = await axios.get("/api/products");
+      let response;
+      if (search){
+         response = await axios.get(`/api/products?search=${search}`);
+      } else {
+        response = await axios.get('/api/products');
+      }
+      
       // console.log(response.data);
       setProducts(response.data);
     };
     fetchHomeData();
-  }, []);
+  }, [search]);
 
   return (
     <>

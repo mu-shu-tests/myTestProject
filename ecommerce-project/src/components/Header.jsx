@@ -7,9 +7,17 @@ import SearchIcon from "../assets/images/icons/search-icon.png";
 import CartIcon from "../assets/images/icons/cart-icon.png";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { useSearchParams } from "react-router";
 function Header({ cart }) {
-  const [searchBarText, setSearchBarText] = useState("");
+  const [searchParams] = useSearchParams();
+  const search = searchParams.get("search");
+  const [searchBarText, setSearchBarText] = useState(search);
   const navigate = useNavigate();
+
+  /**
+  if (search) {
+    setSearchParams(search);
+  } */
 
   const getSearchBarText = (event) => {
     setSearchBarText(event.target.value);
