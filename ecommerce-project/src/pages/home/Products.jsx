@@ -25,13 +25,18 @@ function Products({ product, loadCart }) {
   return (
     <div key={product.id} className="product-container">
       <div className="product-image-container">
-        <img className="product-image" src={product.image} />
+        <img
+          data-testid="product-image"
+          className="product-image"
+          src={product.image}
+        />
       </div>
 
       <div className="product-name limit-text-to-2-lines">{product.name}</div>
 
       <div className="product-rating-container">
         <img
+          data-testid="product-rating-stars-image"
           className="product-rating-stars"
           src={`images/ratings/rating-${product.rating.stars * 10}.png`}
         />
@@ -40,9 +45,7 @@ function Products({ product, loadCart }) {
         </div>
       </div>
 
-      <div className="product-price">
-        {formatCurrency(product.priceCents)}
-      </div>
+      <div className="product-price">{formatCurrency(product.priceCents)}</div>
 
       <div className="product-quantity-container">
         <select value={quantity} onChange={selectedQuantity}>
