@@ -34,7 +34,7 @@ function DeliveryOptions({ cartItem, deliveryOptions, loadCart }) {
               </div>
               <div className="delivery-option-price">
                 {deliveryOption.priceCents > 0
-                  ? `$${formatCurrency(deliveryOption.priceCents)} - Shipping`
+                  ? `${formatCurrency(deliveryOption.priceCents)} - Shipping`
                   : " FREE Shipping"}
               </div>
             </div>

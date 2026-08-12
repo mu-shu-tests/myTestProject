@@ -41,7 +41,7 @@ function Products({ product, loadCart }) {
       </div>
 
       <div className="product-price">
-        {"$" + formatCurrency(product.priceCents)}
+        {formatCurrency(product.priceCents)}
       </div>
 
       <div className="product-quantity-container">

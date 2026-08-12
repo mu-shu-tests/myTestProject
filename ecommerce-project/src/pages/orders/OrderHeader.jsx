@@ -11,7 +11,7 @@ function OrderHeader({ order }) {
         </div>
         <div className="order-total">
           <div className="order-header-label">Total:</div>
-          <div>{"$" + formatCurrency(order.totalCostCents)}</div>
+          <div>{formatCurrency(order.totalCostCents)}</div>
         </div>
       </div>
 

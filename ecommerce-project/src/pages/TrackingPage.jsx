@@ -41,10 +41,10 @@ function TrackingPage({ cart }) {
     // console.log(timePassedMs);
     let deliveryPercent;
     let arrivingOn = "Arriving on";
-      // some calculations
-      ((timePassedMs / totalDeliveryTimeMs) * 100).toFixed(2) > 100
-        ? ((deliveryPercent = 100), (arrivingOn = "Delivered on"))
-        : ((deliveryPercent = 50), arrivingOn);
+    // some calculations
+    ((timePassedMs / totalDeliveryTimeMs) * 100).toFixed(2) > 100
+      ? ((deliveryPercent = 100), (arrivingOn = "Delivered on"))
+      : ((deliveryPercent = 50), arrivingOn);
     //console.log(deliveryPercent);
     let isPreparing;
     let isShipped;
