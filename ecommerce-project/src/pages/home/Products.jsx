@@ -23,7 +23,11 @@ function Products({ product, loadCart }) {
     setQuantity(selectedQuantity);
   };
   return (
-    <div key={product.id} className="product-container">
+    <div
+      key={product.id}
+      className="product-container"
+      data-testid="productcontainer"
+    >
       <div className="product-image-container">
         <img
           data-testid="product-image"
@@ -74,7 +78,11 @@ function Products({ product, loadCart }) {
         Added
       </div>
 
-      <button data-testid="addToCartButton" onClick={addToCart} className="add-to-cart-button button-primary">
+      <button
+        data-testid="addToCartButton"
+        onClick={addToCart}
+        className="add-to-cart-button button-primary"
+      >
         Add to Cart
       </button>
     </div>
