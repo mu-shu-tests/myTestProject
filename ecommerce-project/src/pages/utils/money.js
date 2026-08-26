@@ -1,3 +1,7 @@
 export default function formatCurrency(moneyAmount) {
-  return `$${(moneyAmount / 100).toFixed(2)}`
+  if (moneyAmount >= 0) {
+    return `$${(moneyAmount / 100).toFixed(2)}`;
+  } else if (moneyAmount < 0) {
+    return `-$${(-moneyAmount / 100).toFixed(2)}`;
+  }
 }

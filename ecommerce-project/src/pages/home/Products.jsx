@@ -52,7 +52,7 @@ function Products({ product, loadCart }) {
       <div className="product-price">{formatCurrency(product.priceCents)}</div>
 
       <div className="product-quantity-container">
-        <select value={quantity} onChange={selectedQuantity}>
+        <select value={quantity} onChange={selectedQuantity} data-testid='selected-quantity'>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
