@@ -3,11 +3,16 @@ import { it, describe, expect, vi, beforeEach } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import HomePage from "./HomePage";
 import { MemoryRouter } from "react-router";
+import userEvent from "@testing-library/user-event";
+
 vi.mock("axios");
 
 describe("products component", () => {
   let loadCart;
+  let user;
+
   beforeEach(() => {
+    user = userEvent.setup();
     loadCart = vi.fn();
     axios.get.mockImplementation(async (urlPath) => {
       if (urlPath === "/api/products") {
@@ -40,6 +45,7 @@ describe("products component", () => {
       }
     });
   });
+
   it("displays the products correctly", async () => {
     render(
       <MemoryRouter>
@@ -59,5 +65,32 @@ describe("products component", () => {
     expect(
       within(productContainer[1]).getByText("Intermediate Size Basketball"),
     ).toBeInTheDocument();
+  });
+
+  it("add the product to the cart", async () => {
+    render(
+      <MemoryRouter>
+        <HomePage cart={[]} loadCart={loadCart} />
+      </MemoryRouter>,
+    );
+
+    const productContainer = await screen.findAllByTestId("productcontainer");
+    const firstAddToCartBtn = within(productContainer[0]).getByTestId(
+      "addToCartButton",
+    );
+    const secondAddToCartBtn = within(productContainer[1]).getByTestId(
+      "addToCartButton",
+    );
+    await user.click(firstAddToCartBtn);
+    expect(axios.post).toHaveBeenNthCalledWith(1, "/api/cart-items", {
+      productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+      quantity: 1,
+    });
+    await user.click(secondAddToCartBtn);
+
+    expect(axios.post).toHaveBeenNthCalledWith(2, "/api/cart-items", {
+      productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
+      quantity: 1,
+    });
   });
 });
