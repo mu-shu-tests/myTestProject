@@ -81,16 +81,32 @@ describe("products component", () => {
     const secondAddToCartBtn = within(productContainer[1]).getByTestId(
       "addToCartButton",
     );
+    const quantitySelector1 = within(productContainer[0]).getByTestId(
+      "selected-quantity",
+    );
+    expect(quantitySelector1).toHaveValue("1");
+
+    await user.selectOptions(quantitySelector1, "2");
+    expect(quantitySelector1).toHaveValue("2");
+
     await user.click(firstAddToCartBtn);
     expect(axios.post).toHaveBeenNthCalledWith(1, "/api/cart-items", {
       productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-      quantity: 1,
+      quantity: 2,
     });
+
+    const quantitySelector2 = within(productContainer[1]).getByTestId(
+      "selected-quantity",
+    );
+    expect(quantitySelector2).toHaveValue("1");
+
+    await user.selectOptions(quantitySelector2, "3");
+    expect(quantitySelector2).toHaveValue("3");
     await user.click(secondAddToCartBtn);
 
     expect(axios.post).toHaveBeenNthCalledWith(2, "/api/cart-items", {
       productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
-      quantity: 1,
+      quantity: 3,
     });
   });
 });
